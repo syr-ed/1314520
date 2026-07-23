@@ -2,9 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11号机缘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>11号机缘 · 第二期</title>
     <style>
+        /* ===== 全局重置 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -12,39 +13,37 @@
         }
 
         body {
-            font-family: "微软雅黑", sans-serif;
-            background: linear-gradient(135deg, #fff1f3 0%, #ffe6ec 45%, #ffd9e0 100%);
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(145deg, #fff5f7 0%, #ffe8ee 50%, #ffdce4 100%);
             min-height: 100vh;
-            color: #6b2f3a;
+            color: #5a2d3a;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* 粉色幸福背景 */
-        .bg-heart {
+        /* ===== 背景装饰 ===== */
+        .bg-blur {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:
-                radial-gradient(circle at 10% 10%, rgba(255,255,255,0.8) 0 8%, transparent 9%),
-                radial-gradient(circle at 90% 18%, rgba(255,180,200,0.6) 0 10%, transparent 11%),
-                radial-gradient(circle at 15% 85%, rgba(255,180,200,0.5) 0 9%, transparent 10%),
-                radial-gradient(circle at 85% 80%, rgba(255,255,255,0.7) 0 7%, transparent 8%),
-                radial-gradient(circle at 50% 50%, rgba(255,230,235,0.4) 0 18%, transparent 19%);
-            background-size: 180px 180px;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 200, 210, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 160, 180, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 220, 230, 0.15) 0%, transparent 40%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* 开场页 */
+        /* ===== 开场页 ===== */
         .splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #ff9eb5 0%, #ffc2d1 45%, #ffe6ec 100%);
+            background: linear-gradient(135deg, #ffb3c6, #ff8fab, #ffb3c6);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -57,7 +56,7 @@
             width: 130px;
             height: 130px;
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
         }
 
         .splash-heart-ring {
@@ -67,14 +66,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: conic-gradient(
-                from 0deg,
-                #ff4d6d,
-                #ff7aa2,
-                #ffb3c6,
-                #ff7aa2,
-                #ff4d6d
-            );
+            background: conic-gradient(from 0deg, #ff4d6d, #ff7aa2, #ffb3c6, #ff7aa2, #ff4d6d);
             animation: heartSpin 2.5s linear infinite;
         }
 
@@ -96,300 +88,422 @@
 
         .splash-title {
             font-size: 48px;
-            color: #a63a4d;
-            letter-spacing: 8px;
-            margin-bottom: 8px;
-            font-weight: bold;
+            color: #a1344a;
+            letter-spacing: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
         }
 
         .splash-line {
-            width: 200px;
-            height: 1px;
+            width: 180px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, #ff4d6d, transparent);
-            margin-bottom: 8px;
+            margin: 10px 0 8px;
         }
 
         .splash-sub {
             font-size: 14px;
-            color: #80444f;
-            letter-spacing: 4px;
+            color: #7a3f4a;
+            letter-spacing: 6px;
             margin-bottom: 40px;
         }
 
         .enter-btn {
-            padding: 14px 48px;
+            padding: 14px 56px;
             background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
             border: none;
             color: #fff;
-            font-size: 15px;
-            letter-spacing: 6px;
+            font-size: 16px;
+            letter-spacing: 8px;
             cursor: pointer;
             border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(255,77,109,0.25);
+            box-shadow: 0 8px 30px rgba(255, 77, 109, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
         }
-
         .enter-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.25);
         }
 
-        /* 主容器 */
+        /* ===== 主容器 ===== */
         .container {
-            max-width: 520px;
+            max-width: 480px;
             margin: 0 auto;
-            padding: 24px 16px 48px;
+            padding: 24px 16px 40px;
             display: none;
             position: relative;
             z-index: 1;
         }
 
-        /* 顶部头像 */
+        /* ===== 顶部 ===== */
         .top-avatar {
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .avatar-img {
-            width: 78px;
-            height: 78px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 3px solid #ff4d6d;
+            border: 3px solid #ff7aa2;
             object-fit: cover;
             background: #fff;
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.15);
         }
         .avatar-name {
             margin-top: 8px;
-            color: #a63a4d;
-            font-size: 16px;
-            font-weight: bold;
+            color: #a1344a;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+        .avatar-sub {
+            font-size: 13px;
+            color: #b05a6a;
+            letter-spacing: 3px;
+            margin-top: 2px;
+            font-weight: 400;
         }
 
-        /* 公告栏 */
+        /* ===== 公告 ===== */
         .notice-bar {
-            background: rgba(255,255,255,0.7);
-            border: 1px solid #ff9eb5;
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 18px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 77, 109, 0.15);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.06);
         }
         .notice-title {
             color: #ff4d6d;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 6px;
         }
         .notice-text {
-            font-size: 12.5px;
-            line-height: 1.7;
-            color: #6b2f3a;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #5a2d3a;
         }
         .notice-text strong {
             color: #ff4d6d;
         }
 
+        /* ===== 分区标题 ===== */
         .section-title {
-            color: #80444f;
-            font-size: 12px;
-            letter-spacing: 2px;
-            margin: 16px 0 10px 4px;
+            color: #a1344a;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin: 20px 0 12px 6px;
+            font-weight: 600;
         }
 
-        /* 菜单卡片 */
+        /* ===== 菜单卡片 ===== */
         .menu-card {
-            background: rgba(255,255,255,0.72);
-            border: 1px solid #ff9eb5;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 77, 109, 0.12);
+            border-radius: 16px;
             padding: 16px 18px;
             margin-bottom: 12px;
             cursor: pointer;
             position: relative;
+            transition: transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(255, 77, 109, 0.05);
+        }
+        .menu-card:active {
+            transform: scale(0.97);
         }
         .menu-card.top {
             border-color: #ff4d6d;
-            background: rgba(255,77,109,0.08);
+            background: rgba(255, 77, 109, 0.08);
+            backdrop-filter: blur(12px);
         }
         .menu-card h2 {
             font-size: 17px;
-            color: #a63a4d;
+            color: #a1344a;
             margin-bottom: 4px;
+            font-weight: 700;
         }
         .menu-card p {
-            color: #80444f;
+            color: #7a4f5a;
             font-size: 12px;
             line-height: 1.6;
         }
 
         .hot-tag {
             position: absolute;
-            top: 10px;
+            top: 12px;
             right: 12px;
-            background: #ff4d6d;
+            background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
             color: #fff;
             font-size: 10px;
-            padding: 2px 7px;
-            border-radius: 10px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 600;
         }
 
-        /* 返回按钮 */
+        /* ===== 返回按钮 ===== */
         .back-btn {
-            color: #a63a4d;
+            color: #a1344a;
             font-size: 14px;
             cursor: pointer;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             display: inline-block;
+            padding: 4px 0;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .back-btn:hover {
+            color: #ff4d6d;
         }
 
+        /* ===== 页面标题 ===== */
         .page-title {
             text-align: center;
             font-size: 22px;
-            color: #a63a4d;
-            letter-spacing: 4px;
-            margin-bottom: 18px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,77,109,0.15);
+            color: #a1344a;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid rgba(255, 77, 109, 0.1);
+            font-weight: 700;
         }
 
-        /* 榜单条目 */
+        /* ===== 榜单卡片 ===== */
         .rank-item {
-            background: rgba(255,255,255,0.72);
-            border: 1px solid #ff9eb5;
-            border-radius: 12px;
-            padding: 16px 14px;
-            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 77, 109, 0.1);
+            border-radius: 18px;
+            padding: 18px 16px 16px;
+            margin-bottom: 18px;
             position: relative;
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.04);
+            transition: box-shadow 0.2s;
         }
         .rank-item.no1 {
             border-color: #ff4d6d;
-            background: rgba(255,77,109,0.08);
+            background: rgba(255, 77, 109, 0.06);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(255, 77, 109, 0.08);
         }
         .rank-badge {
             position: absolute;
             top: -10px;
             left: 16px;
-            background: #ff4d6d;
+            background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
             color: #fff;
-            padding: 2px 10px;
-            border-radius: 10px;
+            padding: 2px 14px;
+            border-radius: 20px;
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(255, 77, 109, 0.2);
         }
 
-        /* 照片区 */
+        /* ===== 照片区 ===== */
         .photo-box {
             display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 14px;
             justify-content: center;
         }
         .photo-box.two-img img {
             width: 48%;
-            border-radius: 8px;
+            border-radius: 14px;
             object-fit: cover;
             cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        .photo-box.two-img img:active {
+            transform: scale(0.98);
         }
         .photo-box.single img {
             width: 100%;
             max-height: 320px;
-            border-radius: 8px;
+            border-radius: 14px;
             object-fit: cover;
             cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        .photo-box.single img:active {
+            transform: scale(0.98);
         }
 
-        /* 信息区 */
+        /* ===== 信息区 ===== */
         .rank-info h3 {
-            color: #a63a4d;
-            font-size: 15px;
+            font-size: 18px;
+            color: #a1344a;
             margin-bottom: 6px;
-        }
-        .rank-info .ks-row {
-            color: #ff4d6d;
-            font-size: 12.5px;
-            margin-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         .rank-info .desc {
-            color: #6b2f3a;
-            font-size: 12.5px;
-            line-height: 1.7;
-            margin: 8px 0 10px 0;
+            color: #6a3f4a;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 6px 0 14px 0;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            border-left: 3px solid #ffb3c6;
+        }
+        .couple-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
+            color: #fff;
+            font-size: 11px;
+            padding: 0 12px;
+            border-radius: 20px;
+            margin-left: 8px;
+            vertical-align: middle;
+            line-height: 22px;
+            font-weight: 600;
         }
 
-        /* 快手按钮 */
-        .ks-btn-group {
+        /* ===== 按钮组 ===== */
+        .btn-group {
             display: flex;
-            gap: 8px;
+            gap: 10px;
+            margin-top: 8px;
         }
-        .ks-btn {
+        .btn-group .btn {
             flex: 1;
-            padding: 9px;
-            background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
+            padding: 11px 0;
             border: none;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-align: center;
             text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7aa2, #ff4d6d);
+            box-shadow: 0 4px 16px rgba(255, 77, 109, 0.25);
+            transition: transform 0.15s, box-shadow 0.2s;
+            cursor: pointer;
+            display: inline-block;
         }
-        .ks-btn.full {
+        .btn-group .btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(255, 77, 109, 0.15);
+        }
+        .btn-group .btn-primary {
+            background: linear-gradient(135deg, #ff7aa2, #ff4d6d);
+        }
+        .btn-group .btn-secondary {
+            background: linear-gradient(135deg, #b34a5a, #8f3a4a);
+            box-shadow: 0 4px 16px rgba(150, 60, 80, 0.25);
+        }
+
+        .btn-full {
             width: 100%;
             display: block;
-            padding: 11px;
-            font-size: 13px;
+            padding: 13px 0;
+            border: none;
             border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7aa2, #ff4d6d);
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.25);
+            transition: transform 0.15s, box-shadow 0.2s;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .btn-full:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 10px rgba(255, 77, 109, 0.15);
         }
 
-        /* 投稿说明 */
+        .btn-submit {
+            background: linear-gradient(135deg, #ff2d55, #ff4d6d);
+            box-shadow: 0 4px 28px rgba(255, 45, 85, 0.35);
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+        .btn-submit:active {
+            box-shadow: 0 2px 12px rgba(255, 45, 85, 0.2);
+        }
+
+        /* ===== 投稿区 ===== */
         .apply-box {
             margin-top: 18px;
-            padding: 14px;
-            background: rgba(255,255,255,0.72);
-            border-radius: 12px;
-            border: 1px dashed #ff9eb5;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px dashed rgba(255, 77, 109, 0.25);
         }
         .apply-box h4 {
-            color: #a63a4d;
+            color: #a1344a;
             margin-bottom: 8px;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 700;
         }
         .apply-box p {
-            color: #6b2f3a;
-            font-size: 12px;
-            line-height: 1.7;
+            color: #6a3f4a;
+            font-size: 12.5px;
+            line-height: 1.8;
         }
 
-        /* 测算页面 */
+        /* ===== 测算表单 ===== */
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         .form-group label {
             display: block;
             margin-bottom: 6px;
-            color: #6b2f3a;
+            color: #6a3f4a;
             font-size: 13px;
+            font-weight: 500;
         }
         .form-group input {
             width: 100%;
-            padding: 10px 12px;
-            background: rgba(255,255,255,0.7);
-            border: 1px solid #ff9eb5;
-            border-radius: 8px;
-            color: #6b2f3a;
-            font-size: 14px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 77, 109, 0.15);
+            border-radius: 12px;
+            color: #5a2d3a;
+            font-size: 15px;
             outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            border-color: #ff4d6d;
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #ff4d6d, #ff7aa2);
+            padding: 14px;
+            background: linear-gradient(135deg, #ff7aa2, #ff4d6d);
             border: none;
             border-radius: 50px;
             color: #fff;
-            font-size: 15px;
-            font-weight: bold;
-            letter-spacing: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 6px;
             cursor: pointer;
-            margin-top: 5px;
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.25);
+            transition: transform 0.15s;
+        }
+        .submit-btn:active {
+            transform: scale(0.96);
         }
 
-        /* 加载 */
         .loading {
             text-align: center;
             padding: 30px 20px;
@@ -399,35 +513,37 @@
         .loading-icon {
             width: 35px;
             height: 35px;
-            border: 2px solid transparent;
+            border: 3px solid transparent;
             border-top-color: #ff4d6d;
-            border-right-color: #ff4d6d;
+            border-right-color: #ff7aa2;
             border-radius: 50%;
             margin: 0 auto 10px;
             animation: heartSpin 1s linear infinite;
         }
 
-        /* 结果页 */
         .result-card {
-            background: rgba(255,255,255,0.72);
-            border: 1px solid #ff9eb5;
-            border-radius: 12px;
-            padding: 18px 16px;
-            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 77, 109, 0.1);
+            border-radius: 16px;
+            padding: 20px 16px;
+            margin-bottom: 16px;
         }
         .result-title {
             text-align: center;
-            font-size: 17px;
-            color: #a63a4d;
+            font-size: 18px;
+            color: #a1344a;
             margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,77,109,0.15);
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 77, 109, 0.08);
+            font-weight: 700;
         }
         .result-item {
             margin-bottom: 12px;
             line-height: 1.7;
             padding-bottom: 10px;
-            border-bottom: 1px dashed rgba(255,77,109,0.12);
+            border-bottom: 1px dashed rgba(255, 77, 109, 0.08);
         }
         .result-item:last-child {
             border-bottom: none;
@@ -439,113 +555,124 @@
             display: block;
             margin-bottom: 2px;
             font-size: 13px;
-            font-weight: normal;
+            font-weight: 600;
         }
         .result-item span {
-            color: #6b2f3a;
-            font-size: 13.5px;
+            color: #5a2d3a;
+            font-size: 14px;
         }
 
         .score-bar {
             height: 6px;
-            background: rgba(255,77,109,0.15);
-            border-radius: 3px;
-            margin-top: 5px;
+            background: rgba(255, 77, 109, 0.12);
+            border-radius: 4px;
+            margin-top: 6px;
             overflow: hidden;
         }
         .score-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ff4d6d, #ff7aa2);
-            border-radius: 3px;
+            background: linear-gradient(90deg, #ff7aa2, #ff4d6d);
+            border-radius: 4px;
             width: 0;
             transition: width 1.5s ease;
         }
 
         .suggestion-box {
-            background: rgba(255,77,109,0.08);
-            border-left: 3px solid #ff4d6d;
+            background: rgba(255, 77, 109, 0.06);
+            border-left: 4px solid #ff4d6d;
             padding: 12px 14px;
-            margin-top: 15px;
-            border-radius: 0 8px 8px 0;
+            margin-top: 16px;
+            border-radius: 0 10px 10px 0;
         }
         .suggestion-box h4 {
-            color: #a63a4d;
-            margin-bottom: 5px;
+            color: #a1344a;
+            margin-bottom: 4px;
             font-size: 13px;
-            font-weight: normal;
+            font-weight: 600;
         }
         .suggestion-box p {
-            color: #6b2f3a;
-            font-size: 12.5px;
-            line-height: 1.7;
+            color: #5a2d3a;
+            font-size: 13px;
+            line-height: 1.8;
         }
 
         .disclaimer {
             text-align: center;
-            color: #80444f;
+            color: #8a6a72;
             font-size: 11px;
-            margin-top: 18px;
+            margin-top: 20px;
+            letter-spacing: 1px;
         }
 
         .page {
             display: none;
         }
 
-        /* 图片放大 */
+        /* ===== 图片放大 ===== */
         .img-lightbox {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 9999;
+            cursor: pointer;
         }
         .img-lightbox.show {
             display: flex;
         }
         .img-lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            border-radius: 8px;
+            max-width: 92%;
+            max-height: 92vh;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 <body>
-    <div class="bg-heart"></div>
+    <!-- 背景音乐 -->
+    <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+
+    <!-- 背景模糊层 -->
+    <div class="bg-blur"></div>
 
     <!-- 图片放大 -->
     <div class="img-lightbox" id="lightbox" onclick="closeLightbox()">
         <img id="lightboxImg" src="" alt="">
     </div>
 
-    <!-- 开场页 -->
+    <!-- ===== 开场页 ===== -->
     <div class="splash-screen" id="splash">
         <div class="splash-box">
             <div class="splash-heart-ring"></div>
             <img src="splash-avatar.jpg" class="splash-avatar" alt="" onerror="this.style.display='none'">
         </div>
-        <div class="splash-title">11号.机缘</div>
+        <div class="splash-title">11号机缘</div>
         <div class="splash-line"></div>
-        <div class="splash-sub">缘起缘灭 皆有定数</div>
+        <div class="splash-sub">第二期 · 以名会友</div>
         <button class="enter-btn" onclick="enterMain()">入 缘</button>
     </div>
 
-    <!-- 主菜单 -->
+    <!-- ===== 主菜单 ===== -->
     <div class="container page" id="mainMenu">
         <div class="top-avatar">
             <img src="avatar.jpg" class="avatar-img" alt="" onerror="this.style.display='none'">
-            <div class="avatar-name">11号.</div>
+            <!-- 顶部标题改为第二期主题 -->
+            <div class="avatar-name">11号机缘 · 第二期</div>
+            <div class="avatar-sub">💞 以心换心 · 汇聚有缘人</div>
         </div>
 
         <div class="notice-bar">
             <div class="notice-title">📢 重要公告</div>
             <div class="notice-text">
-                <strong>每周不定时更新榜单</strong>，按投稿先来后到排序。<br>
-                想上榜跳转快手私信或评论区投稿，所有测算仅供娱乐。
+                <strong>榜单不定期更新</strong>，按投稿先来后到排序。<br>
+                📩 欢迎投稿，私信 @11号. 即可上榜，所有测算仅供娱乐。
             </div>
         </div>
 
@@ -554,7 +681,7 @@
         <div class="menu-card top" onclick="goPage('coupleRank')">
             <span class="hot-tag">热门</span>
             <h2>💑 最幸福情侣榜</h2>
-            <p>记录甜蜜瞬间，见证最美爱情，每周一更新排名</p>
+            <p>记录甜蜜瞬间，见证最美爱情，不定期更新</p>
         </div>
 
         <div class="menu-card" onclick="goPage('singleRank')">
@@ -586,11 +713,12 @@
         <p class="disclaimer">※ 所有内容均为娱乐生成，请勿当真 ※</p>
     </div>
 
-    <!-- 情侣榜 -->
+    <!-- ===== 情侣榜 ===== -->
     <div class="container page" id="coupleRank">
         <div class="back-btn" onclick="goPage('mainMenu')">← 返回</div>
         <div class="page-title">最幸福情侣榜</div>
 
+        <!-- 情侣榜一 -->
         <div class="rank-item no1">
             <div class="rank-badge">榜 一</div>
             <div class="photo-box two-img">
@@ -598,239 +726,193 @@
                 <img src="couple1_2.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
             </div>
             <div class="rank-info">
-                <h3>·刀斩思绪悲痛 & ㅤㅤㅤㅤ ㅤㅤㅤ</h3>
-                <div class="ks-row">男主：@·刀斩思绪悲痛</div>
-                <div class="ks-row">女主：@ㅤㅤㅤㅤ ㅤㅤㅤ</div>
-                <div class="desc">平平淡淡，互相陪伴，是彼此最坚定的依靠。</div>
-                <div class="ks-btn-group">
-                    <a href="https://v.kuaishou.com/Jz7Z2XRF" target="_blank" class="ks-btn">👉 男主主页</a>
-                    <a href="https://v.kuaishou.com/Jn4Phk0R" target="_blank" class="ks-btn">👉 女主主页</a>
+                <h3>·刀斩思绪悲痛 & ㅤㅤㅤㅤ ㅤㅤㅤ <span class="couple-tag">💞情侣</span></h3>
+                <div class="desc">相互陪伴，彼此依靠，在平凡的日子里共同成长。</div>
+                <div class="btn-group">
+                    <a href="https://v.kuaishou.com/Jz7Z2XRF" target="_blank" class="btn btn-primary">👤 男主主页</a>
+                    <a href="https://v.kuaishou.com/Jn4Phk0R" target="_blank" class="btn btn-secondary">👤 女主主页</a>
                 </div>
             </div>
         </div>
 
+        <!-- 情侣榜二 -->
         <div class="rank-item">
             <div class="rank-badge">榜 二</div>
             <div class="photo-box single">
                 <img src="couple2.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
             </div>
             <div class="rank-info">
-                <h3>搁浅💒 & 装萌干坏事.</h3>
-                <div class="ks-row">男主：@搁浅💒</div>
-                <div class="ks-row">女主：@装萌干坏事.</div>
-                <div class="desc">打打闹闹，互相嫌弃又不离不弃。</div>
-                <div class="ks-btn-group">
-                    <a href="https://v.kuaishou.com/KPEamjmR" target="_blank" class="ks-btn">👉 男主主页</a>
-                    <a href="https://v.kuaishou.com/JELDcAa5" target="_blank" class="ks-btn">👉 女主主页</a>
+                <h3>搁浅💒 & 装萌干坏事. <span class="couple-tag">💞情侣</span></h3>
+                <div class="desc">缘分让彼此相遇，携手共度每一个美好瞬间。</div>
+                <div class="btn-group">
+                    <a href="https://v.kuaishou.com/Kc9UMiLT" target="_blank" class="btn btn-primary">👤 男主主页</a>
+                    <a href="https://v.kuaishou.com/JELDcAa5" target="_blank" class="btn btn-secondary">👤 女主主页</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 情侣榜三 -->
+        <div class="rank-item">
+            <div class="rank-badge">榜 三</div>
+            <div class="photo-box single">
+                <img src="couple3.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
+            </div>
+            <div class="rank-info">
+                <h3>快手用户1782921174705 & 用误会来结尾 <span class="couple-tag">💞情侣</span></h3>
+                <div class="desc">相知相守，每一个平凡日子都是幸福的证明。</div>
+                <div class="btn-group">
+                    <a href="https://v.kuaishou.com/JyV81s3N" target="_blank" class="btn btn-primary">👤 男主主页</a>
+                    <a href="https://v.kuaishou.com/K9cRwAN5" target="_blank" class="btn btn-secondary">👤 女主主页</a>
                 </div>
             </div>
         </div>
 
         <div class="apply-box">
-            <h4>📝 如何上榜</h4>
-            <p>
-                1. 跳转快手关注 @11号.<br>
-                2. 私信发「情侣榜投稿」+ 合照 + 简介 + 双方快手号<br>
-                3. 按先来后到登记，每周一统一更新榜单
-            </p>
-            <a href="https://v.kuaishou.com/71WbZ895" target="_blank" class="ks-btn full" style="margin-top:10px;">
-                👉 去快手投稿
-            </a>
+            <h4>📝 榜单投稿规则</h4>
+            <p>1. 打开快手，关注 @11号.<br>
+            2. 私信发送【投稿】+ 情侣合照 + 双方快手号<br>
+            3. 先来后到，不定期更新榜单，欢迎大家踊跃投稿 💌</p>
+            <a href="https://v.kuaishou.com/71WbZ895" target="_blank" class="btn-full btn-submit">❤️ 去快手投稿</a>
         </div>
     </div>
 
-    <!-- 单身榜 -->
+    <!-- ===== 单身榜 ===== -->
     <div class="container page" id="singleRank">
         <div class="back-btn" onclick="goPage('mainMenu')">← 返回</div>
         <div class="page-title">优质单身榜</div>
 
+        <!-- 单身榜一 -->
         <div class="rank-item no1">
-            <div class="rank-badge">榜 一</div>
+            <div class="rank-badge">榜 一 女生</div>
             <div class="photo-box single">
                 <img src="single1.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
             </div>
             <div class="rank-info">
                 <h3>总对你心软</h3>
-                <div class="ks-row">快手：@总对你心软</div>
-                <div class="desc">
-                    <strong>性格：</strong>温柔慢热、细心体贴，熟了之后很粘人<br>
-                    <strong>爱好：</strong>追剧、听歌、逛吃<br>
-                    <strong>理想型：</strong>成熟稳重、有责任心、三观正
-                </div>
-                <a href="https://v.kuaishou.com/nsSs422x" target="_blank" class="ks-btn full">
-                    👉 跳转快手主页
-                </a>
+                <div class="desc">温柔慢热，待人真诚，喜欢听歌散步，期待遇见合拍的朋友。</div>
+                <a href="https://v.kuaishou.com/nsSs422x" target="_blank" class="btn-full">👤 打开主页</a>
             </div>
         </div>
 
+        <!-- 单身榜二 -->
         <div class="rank-item">
-            <div class="rank-badge">榜 二</div>
+            <div class="rank-badge">榜 二 女生</div>
             <div class="photo-box single">
                 <img src="single2.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
             </div>
             <div class="rank-info">
-                <h3>虚位以待</h3>
-                <div class="ks-row">快手：待投稿</div>
-                <div class="desc">下一个上榜的就是你，快来投稿吧～</div>
-                <a href="https://v.kuaishou.com/71WbZ895" target="_blank" class="ks-btn full">
-                    👉 我要投稿上榜
-                </a>
+                <h3>黑水负真心</h3>
+                <div class="desc">有趣的灵魂，期待遇见真诚的你，一起分享生活点滴。</div>
+                <a href="https://v.kuaishou.com/KmedakdX" target="_blank" class="btn-full">👤 打开主页</a>
+            </div>
+        </div>
+
+        <!-- 单身榜三 -->
+        <div class="rank-item">
+            <div class="rank-badge">榜 三 女生</div>
+            <div class="photo-box single">
+                <img src="single3.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
+            </div>
+            <div class="rank-info">
+                <h3>快手用户1784111801954</h3>
+                <div class="desc">安静随和，喜欢简单的生活，希望能遇到聊得来的朋友。</div>
+                <a href="https://v.kuaishou.com/JU9dnRq3" target="_blank" class="btn-full">👤 打开主页</a>
+            </div>
+        </div>
+
+        <!-- 单身榜四 -->
+        <div class="rank-item">
+            <div class="rank-badge">榜 四 男生</div>
+            <div class="photo-box single">
+                <img src="single4.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
+            </div>
+            <div class="rank-info">
+                <h3>ㅤㅤㅤㅤㅤㅤ      </h3>
+                <div class="desc">保持热爱，奔赴山海，期待遇见同频的人。</div>
+                <a href="https://v.kuaishou.com/JF1X9SNJ" target="_blank" class="btn-full">👤 打开主页</a>
+            </div>
+        </div>
+
+        <!-- 单身榜五 -->
+        <div class="rank-item">
+            <div class="rank-badge">榜 五 女生</div>
+            <div class="photo-box single">
+                <img src="single5.jpg" alt="" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
+            </div>
+            <div class="rank-info">
+                <h3>毛豆.-</h3>
+                <div class="desc">元气满满，喜欢交朋友，一起分享快乐日常。</div>
+                <a href="https://v.kuaishou.com/JqFSV8UP" target="_blank" class="btn-full">👤 打开主页</a>
             </div>
         </div>
 
         <div class="apply-box">
-            <h4>📝 如何上榜</h4>
-            <p>
-                1. 跳转快手关注 @11号.<br>
-                2. 私信发「单身榜投稿」+ 照片 + 自我介绍 + 快手号<br>
-                3. 按先来后到登记，每周一统一更新榜单
-            </p>
-            <a href="https://v.kuaishou.com/71WbZ895" target="_blank" class="ks-btn full" style="margin-top:10px;">
-                👉 去快手投稿
-            </a>
+            <h4>📝 单身投稿流程</h4>
+            <p>快手搜索 @11号.，私信发送【投稿】+ 自拍照片 + 性格介绍 + 快手号，不定期更新，欢迎来稿 💕</p>
         </div>
     </div>
 
-    <!-- 测真缘 -->
+    <!-- ===== 测真缘 ===== -->
     <div class="container page" id="trueLove">
         <div class="back-btn" onclick="goPage('mainMenu')">← 返回</div>
         <div class="page-title">测真缘</div>
-
         <div class="result-card">
             <div class="form-group">
                 <label>你的姓名</label>
                 <input type="text" id="yourName" placeholder="请输入你的名字">
             </div>
             <button class="submit-btn" onclick="calcTrueLove()">开 始 推 算</button>
-            <div class="loading" id="loading1">
-                <div class="loading-icon"></div>
-                推演天机中...
-            </div>
+            <div class="loading" id="loading1"><div class="loading-icon"></div>推演天机中...</div>
         </div>
-
         <div class="result-card" id="trueLoveResult" style="display:none;">
             <div class="result-title">真缘机缘簿</div>
-            <div class="result-item">
-                <strong>测算人</strong>
-                <span id="resultName">-</span>
-            </div>
-            <div class="result-item">
-                <strong>遇见时机</strong>
-                <span id="meetTime">-</span>
-            </div>
-            <div class="result-item">
-                <strong>对方姓氏机缘</strong>
-                <span id="herSurname">-</span>
-            </div>
-            <div class="result-item">
-                <strong>相遇场景</strong>
-                <span id="meetPlace">-</span>
-            </div>
-            <div class="result-item">
-                <strong>性格特征</strong>
-                <span id="herPersonality">-</span>
-            </div>
-            <div class="suggestion-box">
-                <h4>机缘提示</h4>
-                <p id="loveTip">-</p>
-            </div>
+            <div class="result-item"><strong>测算人</strong><span id="resultName">-</span></div>
+            <div class="result-item"><strong>遇见时机</strong><span id="meetTime">-</span></div>
+            <div class="result-item"><strong>对方姓氏机缘</strong><span id="herSurname">-</span></div>
+            <div class="result-item"><strong>相遇场景</strong><span id="meetPlace">-</span></div>
+            <div class="result-item"><strong>性格特征</strong><span id="herPersonality">-</span></div>
+            <div class="suggestion-box"><h4>机缘提示</h4><p id="loveTip">-</p></div>
         </div>
     </div>
 
-    <!-- 测情缘 -->
+    <!-- ===== 测情缘 ===== -->
     <div class="container page" id="couple">
         <div class="back-btn" onclick="goPage('mainMenu')">← 返回</div>
         <div class="page-title">测情缘</div>
-
         <div class="result-card">
-            <div class="form-group">
-                <label>你的姓名</label>
-                <input type="text" id="boyName" placeholder="请输入你的名字">
-            </div>
-            <div class="form-group">
-                <label>对方姓名</label>
-                <input type="text" id="girlName" placeholder="请输入她的名字">
-            </div>
+            <div class="form-group"><label>你的姓名</label><input type="text" id="boyName" placeholder="请输入你的名字"></div>
+            <div class="form-group"><label>对方姓名</label><input type="text" id="girlName" placeholder="请输入她的名字"></div>
             <button class="submit-btn" onclick="calcCouple()">开 始 测 算</button>
-            <div class="loading" id="loading2">
-                <div class="loading-icon"></div>
-                推演情缘中...
-            </div>
+            <div class="loading" id="loading2"><div class="loading-icon"></div>推演情缘中...</div>
         </div>
-
         <div class="result-card" id="coupleResult" style="display:none;">
             <div class="result-title">情缘合参簿</div>
-            <div class="result-item">
-                <strong>双方</strong>
-                <span id="coupleNames">-</span>
-            </div>
-            <div class="result-item">
-                <strong>感情契合度</strong>
-                <span id="matchScore">-</span>
-                <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
-            </div>
-            <div class="result-item">
-                <strong>当前状态</strong>
-                <span id="currentStatus">-</span>
-            </div>
-            <div class="result-item">
-                <strong>主要问题</strong>
-                <span id="mainProblem">-</span>
-            </div>
-            <div class="result-item">
-                <strong>走向趋势</strong>
-                <span id="trend">-</span>
-            </div>
-            <div class="suggestion-box">
-                <h4>相处建议</h4>
-                <p id="coupleAdvice">-</p>
-            </div>
+            <div class="result-item"><strong>双方</strong><span id="coupleNames">-</span></div>
+            <div class="result-item"><strong>感情契合度</strong><span id="matchScore">-</span><div class="score-bar"><div class="score-fill" id="scoreFill"></div></div></div>
+            <div class="result-item"><strong>当前状态</strong><span id="currentStatus">-</span></div>
+            <div class="result-item"><strong>主要问题</strong><span id="mainProblem">-</span></div>
+            <div class="result-item"><strong>走向趋势</strong><span id="trend">-</span></div>
+            <div class="suggestion-box"><h4>相处建议</h4><p id="coupleAdvice">-</p></div>
         </div>
     </div>
 
-    <!-- 脱单运势 -->
+    <!-- ===== 脱单运势 ===== -->
     <div class="container page" id="singleTest">
         <div class="back-btn" onclick="goPage('mainMenu')">← 返回</div>
         <div class="page-title">脱单运势</div>
-
         <div class="result-card">
-            <div class="form-group">
-                <label>你的姓名</label>
-                <input type="text" id="singleName" placeholder="请输入你的名字">
-            </div>
+            <div class="form-group"><label>你的姓名</label><input type="text" id="singleName" placeholder="请输入你的名字"></div>
             <button class="submit-btn" onclick="calcSingle()">测 算 运 势</button>
-            <div class="loading" id="loading3">
-                <div class="loading-icon"></div>
-                排盘推演中...
-            </div>
+            <div class="loading" id="loading3"><div class="loading-icon"></div>排盘推演中...</div>
         </div>
-
         <div class="result-card" id="singleResult" style="display:none;">
             <div class="result-title">脱单运势笺</div>
-            <div class="result-item">
-                <strong>测算人</strong>
-                <span id="singleResultName">-</span>
-            </div>
-            <div class="result-item">
-                <strong>三个月内脱单概率</strong>
-                <span id="singleProb">-</span>
-            </div>
-            <div class="result-item">
-                <strong>最佳脱单时机</strong>
-                <span id="bestMonth">-</span>
-            </div>
-            <div class="result-item">
-                <strong>旺运方位</strong>
-                <span id="luckyDir">-</span>
-            </div>
-            <div class="result-item">
-                <strong>开运方式</strong>
-                <span id="luckyWay">-</span>
-            </div>
-            <div class="suggestion-box">
-                <h4>运势建议</h4>
-                <p id="singleTip">-</p>
-            </div>
+            <div class="result-item"><strong>测算人</strong><span id="singleResultName">-</span></div>
+            <div class="result-item"><strong>三个月内脱单概率</strong><span id="singleProb">-</span></div>
+            <div class="result-item"><strong>最佳脱单时机</strong><span id="bestMonth">-</span></div>
+            <div class="result-item"><strong>旺运方位</strong><span id="luckyDir">-</span></div>
+            <div class="result-item"><strong>开运方式</strong><span id="luckyWay">-</span></div>
+            <div class="suggestion-box"><h4>运势建议</h4><p id="singleTip">-</p></div>
         </div>
     </div>
 
@@ -845,26 +927,28 @@
             document.getElementById('lightbox').classList.remove('show');
         }
 
-        // 随机工具
         function randomPick(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        // 进入主页
+        // 进入主页播放音乐（自动循环）
         function enterMain() {
-            const splash = document.getElementById('splash');
+            var bgm = document.getElementById('bgm');
+            bgm.volume = 0.5;
+            bgm.play().catch(function(e) {
+                console.log('音乐自动播放被阻止，可点击页面任意位置播放');
+            });
+            var splash = document.getElementById('splash');
             splash.style.opacity = '0';
             splash.style.visibility = 'hidden';
-
             setTimeout(function() {
                 document.getElementById('mainMenu').style.display = 'block';
-            }, 1000);
+            }, 800);
         }
 
-        // 切换页面
         function goPage(id) {
-            const pages = document.querySelectorAll('.page');
-            for (let i = 0; i < pages.length; i++) {
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
                 pages[i].style.display = 'none';
             }
             document.getElementById(id).style.display = 'block';
@@ -873,62 +957,17 @@
 
         // 测真缘
         function calcTrueLove() {
-            const name = document.getElementById('yourName').value.trim();
-            if (!name) {
-                alert('请输入你的姓名');
-                return;
-            }
-
+            var name = document.getElementById('yourName').value.trim();
+            if (!name) { alert('请输入你的姓名'); return; }
             document.getElementById('loading1').style.display = 'block';
-
             setTimeout(function() {
                 document.getElementById('loading1').style.display = 'none';
                 document.getElementById('trueLoveResult').style.display = 'block';
-
-                const times = [
-                    '半年之内，开学后不久',
-                    '下个学期，秋冬之际',
-                    '升年级/分班之后',
-                    '放假出去玩的时候',
-                    '朋友生日聚会之后',
-                    '两年内，中考/高考之后'
-                ];
-
-                const surnames = [
-                    '李、王、张 中居其一',
-                    '陈、刘、杨 概率最高',
-                    '黄、赵、周 有缘',
-                    '吴、徐、孙 之姓',
-                    '稀有姓氏，班里少见'
-                ];
-
-                const places = [
-                    '同班前后桌，上课传纸条慢慢熟络',
-                    '朋友生日聚会，经共同好友介绍认识',
-                    '打游戏组队匹配，线上聊熟后线下见面',
-                    '同校不同班，运动会认识',
-                    '补课班坐同桌，日久生情',
-                    '原本是玩得很好的朋友，慢慢变成情侣',
-                    '校园小卖部偶遇，多次碰面加了联系方式',
-                    '放学同路，天天一起走慢慢动心'
-                ];
-
-                const personalities = [
-                    '温柔内敛，心思细腻，慢热但长情',
-                    '活泼开朗，爱笑爱闹，治愈系性格',
-                    '独立清醒，有主见，行事果断',
-                    '安静文艺，喜欢听歌追剧',
-                    '热心善良，共情力强，待人真诚',
-                    '古灵精怪，想法多，充满新鲜感'
-                ];
-
-                const tips = [
-                    '多和朋友出去走动，宅在家里缘分不会找上门。',
-                    '不必刻意寻找，缘分往往在你最不经意的时候出现。',
-                    '遇到心动的人要主动一点，犹豫和等待只会错过机缘。',
-                    '先做好自己，再遇见对的人。你是什么样的人，就会吸引什么样的人。'
-                ];
-
+                var times = ['半年之内', '下个学期', '放假期间', '朋友聚会时', '两个月后', '一年内'];
+                var surnames = ['李、王、张', '陈、刘、杨', '黄、赵、周', '吴、徐、孙', '稀有姓氏'];
+                var places = ['校园偶遇', '朋友介绍', '社团活动', '旅行途中', '网络结识'];
+                var personalities = ['温柔内敛', '活泼开朗', '独立清醒', '安静文艺', '热心善良', '古灵精怪'];
+                var tips = ['多走出去，缘分自然来。', '不必刻意，顺其自然。', '主动一点，机会更多。', '做好自己，吸引同频。'];
                 document.getElementById('resultName').textContent = name;
                 document.getElementById('meetTime').textContent = randomPick(times);
                 document.getElementById('herSurname').textContent = randomPick(surnames);
@@ -940,55 +979,18 @@
 
         // 测情缘
         function calcCouple() {
-            const boy = document.getElementById('boyName').value.trim();
-            const girl = document.getElementById('girlName').value.trim();
-
-            if (!boy || !girl) {
-                alert('请输入双方姓名');
-                return;
-            }
-
+            var boy = document.getElementById('boyName').value.trim();
+            var girl = document.getElementById('girlName').value.trim();
+            if (!boy || !girl) { alert('请输入双方姓名'); return; }
             document.getElementById('loading2').style.display = 'block';
-
             setTimeout(function() {
                 document.getElementById('loading2').style.display = 'none';
                 document.getElementById('coupleResult').style.display = 'block';
-
-                const score = Math.floor(Math.random() * 30) + 70;
-
-                const statuses = [
-                    '平稳上升期，感情日渐深厚',
-                    '磨合期，偶有吵架但不伤根本',
-                    '甜蜜热恋期，天天都想见面',
-                    '平淡期，聊天变少缺少新鲜感',
-                    '存在隔阂，闹别扭冷战中',
-                    '关系稳定，像老夫老妻'
-                ];
-
-                const problems = [
-                    '沟通不足，很多话藏在心里不说',
-                    '安全感缺失，容易胡思乱想',
-                    '作息爱好不合，玩不到一块去',
-                    '新鲜感下降，相处模式固化',
-                    '朋友/同学的闲言碎语干扰'
-                ];
-
-                const trends = [
-                    '持续升温，放完假关系更进一步',
-                    '保持现状，细水长流',
-                    '需度过一道坎，跨过去就是长久',
-                    '下半年会有重要转折点',
-                    '整体向好，小摩擦不断'
-                ];
-
-                const advices = [
-                    '多坦诚沟通，不要让误会累积。遇到问题及时说开。',
-                    '给彼此适当的空间，不要抓得太紧。好的感情是并肩前行。',
-                    '偶尔制造小惊喜，平淡的生活也需要浪漫调味。',
-                    '学会换位思考，多站在对方角度想问题。包容和理解比争输赢更重要。',
-                    '珍惜当下，不要总盯着对方的缺点。多看优点，多赞美。'
-                ];
-
+                var score = Math.floor(Math.random() * 30) + 70;
+                var statuses = ['平稳上升', '偶有小摩擦', '甜蜜热恋', '平淡安稳', '需要沟通'];
+                var problems = ['沟通不足', '安全感缺失', '爱好不合', '新鲜感下降'];
+                var trends = ['持续升温', '细水长流', '需度过磨合期', '整体向好'];
+                var advices = ['多沟通，别让误会累积。', '给彼此空间，信任很重要。', '制造小惊喜，保持浪漫。', '学会换位思考，包容理解。'];
                 document.getElementById('coupleNames').textContent = boy + ' 与 ' + girl;
                 document.getElementById('matchScore').textContent = score + ' 分';
                 document.getElementById('scoreFill').style.width = score + '%';
@@ -1001,59 +1003,17 @@
 
         // 脱单运势
         function calcSingle() {
-            const name = document.getElementById('singleName').value.trim();
-            if (!name) {
-                alert('请输入你的姓名');
-                return;
-            }
-
+            var name = document.getElementById('singleName').value.trim();
+            if (!name) { alert('请输入你的姓名'); return; }
             document.getElementById('loading3').style.display = 'block';
-
             setTimeout(function() {
                 document.getElementById('loading3').style.display = 'none';
                 document.getElementById('singleResult').style.display = 'block';
-
-                const probs = [
-                    '85% - 脱单几率很大，把握机会',
-                    '65% - 有机会，需主动出击',
-                    '45% - 缘分未到，耐心等待',
-                    '75% - 下学期桃花旺盛',
-                    '35% - 近期偏烂桃花多，需甄别',
-                    '90% - 正缘将至，做好准备'
-                ];
-
-                const months = [
-                    '开学后第一个月',
-                    '放寒假/暑假期间',
-                    '明年开春三月',
-                    '两个月后',
-                    '生日前后一个月',
-                    '入冬之后'
-                ];
-
-                const dirs = [
-                    '教室东边座位',
-                    '操场南边',
-                    '学校西北方向',
-                    '教学楼东南侧',
-                    '食堂北门'
-                ];
-
-                const ways = [
-                    '换个新发型，提升外在形象',
-                    '多参加朋友聚会，扩大社交圈',
-                    '多去操场打球/散步，旺桃花运',
-                    '佩戴黑色/红色饰品',
-                    '主动加有好感的人联系方式'
-                ];
-
-                const tips = [
-                    '脱单的前提是你准备好了迎接一个人，而不是急需一个人填补空虚。',
-                    '你变得更好的时候，对的人自然会来。',
-                    '不要等完美的人出现，先成为更好的自己。',
-                    '主动才有故事，坐等缘分从天而降概率太低。'
-                ];
-
+                var probs = ['85% 机会很大', '65% 有机会', '45% 耐心等待', '75% 桃花旺盛', '35% 谨慎分辨'];
+                var months = ['下个月', '三个月后', '半年内', '明年开春'];
+                var dirs = ['东边', '南边', '西北', '东南'];
+                var ways = ['换新发型', '多社交', '多运动', '佩戴粉色饰品'];
+                var tips = ['做好自己，缘分自来。', '主动才有故事。', '先享受独处，再迎接两人。'];
                 document.getElementById('singleResultName').textContent = name;
                 document.getElementById('singleProb').textContent = randomPick(probs);
                 document.getElementById('bestMonth').textContent = randomPick(months);
